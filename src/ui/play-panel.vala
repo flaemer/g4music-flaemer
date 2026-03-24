@@ -2,8 +2,8 @@ namespace G4 {
 
     [GtkTemplate (ui = "/com/github/neithern/g4music/gtk/play-panel.ui")]
     public class PlayPanel : Gtk.Box, SizeWatcher {
-      [GtkChild]
-public unowned Gtk.HeaderBar header_bar; // Добавляем эту строку
+        [GtkChild]
+        public unowned Gtk.HeaderBar header_bar; // Добавляем эту строку
         [GtkChild]
         private unowned Gtk.MenuButton action_btn;
         [GtkChild]
@@ -30,7 +30,7 @@ public unowned Gtk.HeaderBar header_bar; // Добавляем эту строк
         private CrossFadePaintable _crossfade_paintable = new CrossFadePaintable ();
         private MatrixPaintable _matrix_paintable = new MatrixPaintable ();
         private RoundPaintable _round_paintable = new RoundPaintable ();
-        private bool _rotate_cover = true;
+        private bool _rotate_cover = false;
         private bool _show_peak = true;
         private bool _size_allocated = false;
 

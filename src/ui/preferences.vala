@@ -8,11 +8,9 @@ namespace G4 {
     [GtkTemplate (ui = "/com/github/neithern/g4music/gtk/preferences.ui")]
     public class PreferencesWindow : Adw.PreferencesWindow {
         [GtkChild]
-        unowned Adw.ComboRow blur_row;
-        [GtkChild]
         unowned Gtk.Switch compact_btn;
-        [GtkChild]
-        unowned Gtk.Switch grid_btn;
+ //      [GtkChild]
+ //      unowned Gtk.Switch grid_btn;
         [GtkChild]
         unowned Gtk.Switch single_btn;
         [GtkChild]
@@ -23,8 +21,6 @@ namespace G4 {
         unowned Gtk.Switch thumbnail_btn;
         [GtkChild]
         unowned Gtk.Switch playbkgnd_btn;
-        [GtkChild]
-        unowned Gtk.Switch rotate_btn;
         [GtkChild]
         unowned Gtk.Switch gapless_btn;
         [GtkChild]
@@ -41,11 +37,11 @@ namespace G4 {
         public PreferencesWindow (Application app) {
             var settings = app.settings;
 
-            blur_row.model = new Gtk.StringList ({_("Never"), _("Always"), _("Art Only")});
-            settings.bind ("blur-mode", blur_row, "selected", SettingsBindFlags.DEFAULT);
+        //    blur_row.model = new Gtk.StringList ({_("Never"), _("Always"), _("Art Only")});
+         //   settings.bind ("blur-mode", blur_row, "selected", SettingsBindFlags.DEFAULT);
 
             settings.bind ("compact-playlist", compact_btn, "active", SettingsBindFlags.DEFAULT);
-            settings.bind ("grid-mode", grid_btn, "active", SettingsBindFlags.DEFAULT);
+ //          settings.bind ("grid-mode", grid_btn, "active", SettingsBindFlags.DEFAULT);
             settings.bind ("single-click-activate", single_btn, "active", SettingsBindFlags.DEFAULT);
 
             music_dir_btn.label = get_display_name (app.music_folder);
@@ -60,9 +56,7 @@ namespace G4 {
             settings.bind ("remote-thumbnail", thumbnail_btn, "active", SettingsBindFlags.DEFAULT);
 
             settings.bind ("play-background", playbkgnd_btn, "active", SettingsBindFlags.DEFAULT);
-
-           // settings.bind ("rotate-cover", rotate_btn, "active", SettingsBindFlags.DEFAULT);
-
+            
             replaygain_row.model = new Gtk.StringList ({_("Never"), _("Track"), _("Album")});
             settings.bind ("replay-gain", replaygain_row, "selected", SettingsBindFlags.DEFAULT);
 

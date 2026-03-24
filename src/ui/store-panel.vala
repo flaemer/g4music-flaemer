@@ -264,7 +264,8 @@ namespace G4 {
             _app.settings.bind ("compact-playlist", list, "compact-list", SettingsBindFlags.DEFAULT);
             _app.settings.bind ("single-click-activate", list, "single-click-activate", SettingsBindFlags.DEFAULT);
             if (list.item_type != typeof (Music))
-                _app.settings.bind ("grid-mode", list, "grid-mode", SettingsBindFlags.DEFAULT);
+ //               _app.settings.bind ("grid-mode", list, "grid-mode", SettingsBindFlags.DEFAULT);
+                list.grid_mode = true;
             if (editable)
                 list.bind_property ("modified", this, "modified");
         }
