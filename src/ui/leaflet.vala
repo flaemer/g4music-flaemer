@@ -1,8 +1,8 @@
 namespace G4 {
 
     namespace ContentWidth {
-        public const int MIN = 340;
-        public const int MAX = 480;
+        public const int MIN = 580;
+        public const int MAX = 920;
     }
 
     namespace LeafletMode {
@@ -23,7 +23,7 @@ namespace G4 {
         private Stack _widget = new Stack (true);
 
         private bool _folded = false;
-        private float _content_fraction = 3/8f;
+        private float _content_fraction = 7/8f;
         private int _content_min_width = ContentWidth.MIN;
         private int _content_max_width = ContentWidth.MAX;
         private int _view_width = 0;

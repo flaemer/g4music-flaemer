@@ -2,6 +2,8 @@ namespace G4 {
 
     [GtkTemplate (ui = "/com/github/neithern/g4music/gtk/play-panel.ui")]
     public class PlayPanel : Gtk.Box, SizeWatcher {
+      [GtkChild]
+public unowned Gtk.HeaderBar header_bar; // Добавляем эту строку
         [GtkChild]
         private unowned Gtk.MenuButton action_btn;
         [GtkChild]
@@ -75,7 +77,7 @@ namespace G4 {
             app.player.state_changed.connect (on_player_state_changed);
 
             var settings = app.settings;
-            settings.bind ("rotate-cover", this, "rotate-cover", SettingsBindFlags.DEFAULT);
+    // settings.bind ("rotate-cover", this, "rotate-cover", SettingsBindFlags.DEFAULT);
             settings.bind ("show-peak", this, "show-peak", SettingsBindFlags.DEFAULT);
         }
 

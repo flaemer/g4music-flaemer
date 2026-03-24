@@ -61,7 +61,7 @@ namespace G4 {
 
             settings.bind ("play-background", playbkgnd_btn, "active", SettingsBindFlags.DEFAULT);
 
-            settings.bind ("rotate-cover", rotate_btn, "active", SettingsBindFlags.DEFAULT);
+           // settings.bind ("rotate-cover", rotate_btn, "active", SettingsBindFlags.DEFAULT);
 
             replaygain_row.model = new Gtk.StringList ({_("Never"), _("Track"), _("Album")});
             settings.bind ("replay-gain", replaygain_row, "selected", SettingsBindFlags.DEFAULT);

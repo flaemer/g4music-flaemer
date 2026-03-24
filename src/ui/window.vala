@@ -48,11 +48,14 @@ namespace G4 {
             _store_panel = new StorePanel (app, this, _leaflet);
 
             _play_panel = new PlayPanel (app, this, _leaflet);
-            _play_panel.cover_changed.connect (on_cover_changed);
+            _play_panel.cover_changed.connect (on_cover_changed);;
 
-            _leaflet.content = _play_panel;
-            _leaflet.sidebar = _store_panel;
-
+        _leaflet.content = _store_panel; 
+        _leaflet.sidebar = _play_panel; 
+         _play_panel.hexpand = false;
+         _play_panel.width_request = 150;
+         _store_panel.hexpand = true;
+         _store_panel.width_request = 850;
             setup_drop_target ();
             setup_focus_controller ();
 
@@ -229,9 +232,9 @@ namespace G4 {
             rect = Gdk.Rectangle ();
             rect.x = rect.y = rect.width = rect.height = 0;
             if (widget == _progress_bar) {
-                rect.y = _store_panel.header_bar.get_height ();
-                rect.width = _store_panel.get_width ();
-            }
+                rect.y = _play_panel.header_bar.get_height (); // Было _store_panel
+                rect.width = _play_panel.get_width ();         // Было _store_panel
+                        }
             return true;
         }
 
