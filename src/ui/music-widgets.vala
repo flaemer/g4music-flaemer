@@ -283,7 +283,6 @@ namespace G4 {
             if (list_uri.length > 0) {
                 var section2 = new Menu ();
                 section2.append_item (create_menu_item_for_uri (list_uri, _("Show List _File"), ACTION_APP + ACTION_SHOW_FILE));
-                section2.append_item (create_menu_item_for_uri (list_uri, _("_Move to Trash"), ACTION_APP + ACTION_TRASH_FILE));
                 menu.append_section (null, section2);
             }
         }

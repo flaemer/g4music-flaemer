@@ -32,6 +32,8 @@ namespace G4 {
         public unowned Gtk.Label indicator;
         [GtkChild]
         private unowned Gtk.MenuButton sort_btn;
+        [GtkChild] 
+        private unowned Gtk.Label index_label; // index label yea
         [GtkChild]
         private unowned Gtk.ToggleButton search_btn;
         [GtkChild]
@@ -93,6 +95,10 @@ namespace G4 {
             _album_stack.bind_property ("visible-child", this, "visible-child");
             stack_view.add_titled (_album_stack.widget, PageName.ALBUM, _("Albums")).icon_name = "drive-multidisk-symbolic";
 
+            index_label.tooltip_text = _("Playing");
+            app.index_changed.connect (on_index_changed);
+            make_widget_clickable (index_label).released.connect (() => win.open_playing_page ());
+
             _playlist_list = create_playlist_list ();
             _playlist_stack.add (_playlist_list, PageName.PLAYLIST);
             _playlist_stack.bind_property ("visible-child", this, "visible-child");
@@ -137,7 +143,11 @@ namespace G4 {
             _library_uri = settings.get_string ("library-uri");
             initialize_library_page ();
         }
-
+        private void on_index_changed (int index, uint size) {
+             root.action_set_enabled (ACTION_APP + ACTION_PREV, index > 0);
+             root.action_set_enabled (ACTION_APP + ACTION_NEXT, index < (int) size - 1);
+             index_label.label = size > 0 ? @"$(index+1)/$(size)" : "";
+}
         public MusicList current_list {
             get {
                 return _current_list;

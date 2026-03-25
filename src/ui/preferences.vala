@@ -9,16 +9,12 @@ namespace G4 {
     public class PreferencesWindow : Adw.PreferencesWindow {
         [GtkChild]
         unowned Gtk.Switch compact_btn;
- //      [GtkChild]
- //      unowned Gtk.Switch grid_btn;
         [GtkChild]
         unowned Gtk.Switch single_btn;
         [GtkChild]
         unowned Gtk.Button music_dir_btn;
         [GtkChild]
         unowned Gtk.Switch monitor_btn;
-        [GtkChild]
-        unowned Gtk.Switch thumbnail_btn;
         [GtkChild]
         unowned Gtk.Switch playbkgnd_btn;
         [GtkChild]
@@ -52,9 +48,7 @@ namespace G4 {
             });
 
             settings.bind ("monitor-changes", monitor_btn, "active", SettingsBindFlags.DEFAULT);
-
-            settings.bind ("remote-thumbnail", thumbnail_btn, "active", SettingsBindFlags.DEFAULT);
-
+            
             settings.bind ("play-background", playbkgnd_btn, "active", SettingsBindFlags.DEFAULT);
             
             replaygain_row.model = new Gtk.StringList ({_("Never"), _("Track"), _("Album")});

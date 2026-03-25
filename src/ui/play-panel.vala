@@ -9,8 +9,6 @@ namespace G4 {
         [GtkChild]
         private unowned Gtk.Button back_btn;
         [GtkChild]
-        private unowned Gtk.Label index_label;
-        [GtkChild]
         private unowned Gtk.Box music_box;
         [GtkChild]
         private unowned Gtk.Image music_cover;
@@ -55,9 +53,6 @@ namespace G4 {
             music_cover.paintable = _crossfade_paintable;
             create_drag_source ();
 
-            index_label.tooltip_text = _("Playing");
-            make_widget_clickable (index_label).released.connect (() => win.open_playing_page ());
-
             initial_label.activate_link.connect (on_music_folder_clicked);
 
             music_album.tooltip_text = _("Search Album");
@@ -71,7 +66,6 @@ namespace G4 {
                 () => win.start_search (music_title.label, SearchMode.TITLE));
             make_right_clickable (music_box, show_popover_menu);
 
-            app.index_changed.connect (on_index_changed);
             app.music_changed.connect (on_music_changed);
             app.music_cover_parsed.connect (on_music_cover_parsed);
             app.player.state_changed.connect (on_player_state_changed);
@@ -79,18 +73,6 @@ namespace G4 {
             var settings = app.settings;
     // settings.bind ("rotate-cover", this, "rotate-cover", SettingsBindFlags.DEFAULT);
             settings.bind ("show-peak", this, "show-peak", SettingsBindFlags.DEFAULT);
-        }
-
-        public bool rotate_cover {
-            get {
-                return _rotate_cover;
-            }
-            set {
-                _rotate_cover = value;
-                _round_paintable.ratio = value ? 0.5 : 0.05;
-                _matrix_paintable.rotation = value ? _play_bar.position * _degrees_per_second : 0;
-                on_player_state_changed (_app.player.state);
-            }
         }
 
         public bool show_peak {
@@ -153,12 +135,6 @@ namespace G4 {
         private Menu create_music_action_menu () {
             var music = _app.current_music ?? new Music.empty ();
             return create_menu_for_music (music, _app.current_cover != null);
-        }
-
-        private void on_index_changed (int index, uint size) {
-            root.action_set_enabled (ACTION_APP + ACTION_PREV, index > 0);
-            root.action_set_enabled (ACTION_APP + ACTION_NEXT, index < (int) size - 1);
-            index_label.label = size > 0 ? @"$(index+1)/$(size)" : "";
         }
 
         private void on_music_changed (Music? music) {

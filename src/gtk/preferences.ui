@@ -9,12 +9,6 @@
           <object class="AdwPreferencesGroup">
             <property name="title" translatable="yes">General</property>
             <child>
-              <object class="AdwComboRow" id="blur_row">
-                <property name="icon-name">view-dual-symbolic</property>
-                <property name="title" translatable="yes">Background blur mode</property>
-              </object>
-            </child>
-            <child>
               <object class="AdwActionRow">
                 <property name="icon-name">view-list-symbolic</property>
                 <property name="title" translatable="yes">Compact playlist view</property>
@@ -91,19 +85,6 @@
                 </child>
               </object>
             </child>
-            <child>
-              <object class="AdwActionRow">
-                <property name="icon-name">folder-remote-symbolic</property>
-                <property name="title" translatable="yes">Load thumbnails for non-local files</property>
-                <property name="subtitle" translatable="yes">May cause slowdowns and excess network usage</property>
-                <property name="activatable_widget">thumbnail_btn</property>
-                <child>
-                  <object class="GtkSwitch" id="thumbnail_btn">
-                    <property name="valign">center</property>
-                  </object>
-                </child>
-              </object>
-            </child>
           </object>
         </child>
         <child>
@@ -124,18 +105,6 @@
                         <property name="max-length">4</property>
                       </object>
                     </child>
-                  </object>
-                </child>
-              </object>
-            </child>
-            <child>
-              <object class="AdwActionRow">
-                <property name="icon-name">object-rotate-right-symbolic</property>
-                <property name="title" translatable="yes">Rotate album cover</property>
-                <property name="activatable_widget">rotate_btn</property>
-                <child>
-                  <object class="GtkSwitch" id="rotate_btn">
-                    <property name="valign">center</property>
                   </object>
                 </child>
               </object>
