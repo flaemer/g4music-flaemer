@@ -5,7 +5,7 @@ namespace G4 {
         public const uint ART_ONLY = 2;
     }
 
-    [GtkTemplate (ui = "/com/github/neithern/g4music/gtk/preferences.ui")]
+    [GtkTemplate (ui = "/com.github.flaemer.gapless/gtk/preferences.ui")]
     public class PreferencesWindow : Adw.PreferencesWindow {
         [GtkChild]
         unowned Gtk.Switch compact_btn;

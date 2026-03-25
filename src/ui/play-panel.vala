@@ -1,6 +1,6 @@
 namespace G4 {
 
-    [GtkTemplate (ui = "/com/github/neithern/g4music/gtk/play-panel.ui")]
+    [GtkTemplate (ui = "/com.github.flaemer.gapless/gtk/play-panel.ui")]
     public class PlayPanel : Gtk.Box, SizeWatcher {
         [GtkChild]
         public unowned Gtk.HeaderBar header_bar; // Добавляем эту строку

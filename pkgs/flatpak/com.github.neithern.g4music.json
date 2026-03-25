@@ -1,5 +1,5 @@
 {
-    "app-id": "com.github.neithern.g4music",
+    "app-id": "com.github.flaemer.gapless",
     "runtime": "org.gnome.Platform",
     "runtime-version": "49",
     "sdk": "org.gnome.Sdk",
